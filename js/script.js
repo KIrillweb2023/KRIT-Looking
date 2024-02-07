@@ -3,32 +3,54 @@
 window.addEventListener('DOMContentLoaded', (e) =>{
     const btnTheme = document.querySelector('.restangle');
     const circle  = document.querySelector(".restangle-child");
+    const btnScreen = document.querySelector(".theme");
+    const childTheme = document.querySelector('.theme-child');
 
-    function theme({body, btn, circle}){
+    function theme({body, btn, btnScreen, circle, mediaTheme}){
         btn.addEventListener('click', (e) =>{
             circle.classList.toggle('active');
             if(circle.classList.contains('active')){
                 body.classList.add('active');
-                
                 body.style.animation = "themes 0.4s";
+               
             } else {
                 body.classList.remove('active');
                 body.style.animation = "";
                 body.style.animation = "themes-two 0.4s";
             }
+           
         });
+        if(window.screen.width <= 992){
+            btnScreen.addEventListener('click', (e) =>{
+                mediaTheme.classList.toggle('active');
+                if(mediaTheme.classList.contains('active')){
+                    body.classList.add('active');
+                    body.style.animation = "themes 0.4s";
+                   
+                    
+                } else {
+                    body.classList.remove('active');
+                    body.style.animation = "";
+                    body.style.animation = "themes-two 0.4s";
+                }
+               
+            });
+        } 
     }
 
     theme(
         {
             body: document.body,
             btn: btnTheme,
-            circle: circle
+            btnScreen: btnScreen,
+            circle: circle,
+            mediaTheme: childTheme
         }
     );
 
 
-
+  
+ 
 
 
 
@@ -107,4 +129,10 @@ window.addEventListener('DOMContentLoaded', (e) =>{
        
     }
     menuOpen(close, ham, menu, linksNavigation);
+
+    
+
+    
+
+  
 });
